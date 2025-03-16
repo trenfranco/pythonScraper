@@ -13,7 +13,7 @@ DATASET_ID = "articles_data"
 TABLE_ID = "articles"
 TABLE_PATH = f"{DATASET_ID}.{TABLE_ID}"
 
-# Uploads Json data to BigQuery table
+#Upload dataframe to BigQuery table
 def upload_to_bigquery(df):
     """
     Accepts a JSON object (list of articles) and uploads it to BigQuery.

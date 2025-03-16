@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
 import pandas as pd
+from bigqueryUploader import upload_to_bigquery
 
 
 chrome_options = Options()
@@ -21,11 +22,11 @@ driver.get(url)
 
 #dinamycally wait time
 wait = WebDriverWait(driver, 10)
-articles = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//div[contains(@class, 'noticia')]/div[div[@class='imagen']]")))
-
-print("Total articles: " + str(len(articles)))
+articles = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//div[contains(@class, 'noticia')]/div[div[@class='imagen']][.//h2/preceding-sibling::div[contains(@class, 'volanta')]]")))
 
 scrapedArticles = []
+
+#scrape logic using XPATH
 for item in articles:
     try:
         title = item.find_element(By.XPATH, ".//h2/preceding-sibling::div[1]").text
@@ -55,8 +56,10 @@ driver.quit()
 #convert to DataFrame
 df = pd.DataFrame(scrapedArticles)
 
-#save output to JSON for BigQuery integration
-output_file = "scrapedArticles.json"
-df.to_json(output_file, orient="records", indent=4)
+success = upload_to_bigquery(df)
 
-print(f"Scraped data saved to {output_file}")
+if not success:
+    print("Uploading process Error")
+else:
+    print("Success!")
+

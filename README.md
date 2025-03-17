@@ -69,7 +69,7 @@ chmod +x deploy.sh
 
 ./deploy.sh
 
-#Python modules:
+# Python modules:
 pip install selenium
 
 pip install pandas

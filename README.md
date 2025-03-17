@@ -68,3 +68,12 @@ chmod +x deploy.sh
 -Deploy the Service
 
 ./deploy.sh
+
+#Python modules:
+pip install selenium
+pip install pandas
+pip install google-cloud-bigquery
+pip install google-cloud-secret-manager
+pip install flask
+pip install functions-framework
+pip install pyarrow

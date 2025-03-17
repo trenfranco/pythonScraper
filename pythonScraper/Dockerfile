@@ -53,4 +53,4 @@ RUN chmod 400 /app/key.json
 RUN pip install --no-cache-dir -r requirements.txt
 
 #Run the scraper
-CMD ["python", "scraper.py"]
+CMD ["/usr/local/bin/python", "scraper.py"]

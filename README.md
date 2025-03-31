@@ -2,7 +2,7 @@
 
 This project is a web scraper built with **Python** and **Selenium** that extracts news articles from https://www.yogonet.com/international/. The extracted data is processed using Pandas and uploaded to Google BigQuery for further analysis.
 
-# How tu externally run and view the extracted data using http request:
+# How to externally run and view the extracted data using http request:
 **To run**, go to this url that executes the google scrape job: https://us-central1-pythonscraper-453902.cloudfunctions.net/trigger_scraper_job
 
 Wait a couple of minutes to finish the execution and navigate here to **view the extracted data**: https://console.cloud.google.com/bigquery?ws=!1m5!1m4!4m3!1spythonscraper-453902!2sarticles_data!3sarticles
